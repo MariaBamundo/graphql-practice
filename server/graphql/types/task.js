@@ -5,9 +5,9 @@ var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLID = require('graphql').GraphQLID;
 var GraphQLString = require('graphql').GraphQLString;
 
-// User Type
-exports.userType = new GraphQLObjectType({
-  name: 'user',
+// Task Type
+exports.todoType = new GraphQLObjectType({
+  name: 'task',
   fields: function () {
     return {
       id: {

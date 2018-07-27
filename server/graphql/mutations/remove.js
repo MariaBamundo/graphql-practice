@@ -1,20 +1,20 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
-var UserType = require('../types/user');
-var UserModel = require('../../models/user');
+var TodoType = require('../types/task');
+var TodoModel = require('../../models/todo');
 
 exports.remove = {
-  type: UserType.userType,
+  type: TodoType.todoType,
   args: {
     id: {
       type: new GraphQLNonNull(GraphQLString)
     }
   },
   resolve(root, params) {
-    const removeduser = UserModel.findByIdAndRemove(params.id).exec();
-    if (!removeduser) {
+    const removedtask = TodoModel.findByIdAndRemove(params.id).exec();
+    if (!removedtask) {
       throw new Error('Error')
     }
-    return removeduser;
+    return removedtask;
   }
 }

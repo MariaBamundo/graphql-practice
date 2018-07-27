@@ -1,22 +1,22 @@
 
 var GraphQLObjectType = require('graphql').GraphQLObjectType;
 var GraphQLList = require('graphql').GraphQLList;
-var UserModel = require('../../models/user');
-var userType = require('../types/user').userType;
+var TodoModel = require('../../models/todo');
+var taskType = require('../types/task').todoType;
 
 // Query
 exports.queryType = new GraphQLObjectType({
   name: 'Query',
   fields: function () {
     return {
-      users: {
-        type: new GraphQLList(userType),
+      tasks: {
+        type: new GraphQLList(taskType),
         resolve: function () {
-          const users = UserModel.find().exec()
-          if (!users) {
+          const tasks = TodoModel.find().exec()
+          if (!tasks) {
             throw new Error('Error')
           }
-          return users
+          return tasks
         }
       }
     }

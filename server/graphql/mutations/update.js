@@ -1,10 +1,10 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
-var UserType = require('../types/user');
-var UserModel = require('../../models/user');
+var TodoType = require('../types/task');
+var TodoModel = require('../../models/todo');
 
 exports.update = {
-  type: UserType.userType,
+  type: TodoType.todoType,
   args: {
     id: {
       name: 'id',
@@ -15,7 +15,7 @@ exports.update = {
     }
   },
   resolve(root, params) {
-    return UserModel.findByIdAndUpdate(
+    return TodoModel.findByIdAndUpdate(
       params.id,
       { $set: { name: params.name } },
       { new: true }
