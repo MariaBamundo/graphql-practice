@@ -10,6 +10,7 @@ exports.add = {
     name: {
       type: new GraphQLNonNull(GraphQLString),
     }
+    //check: { set to false..?}
   },
   resolve(root, params) {
     const tModel = new TodoModel(params);

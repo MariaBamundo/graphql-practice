@@ -1,5 +1,6 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
+var GraphQLBoolean = require('graphql').GraphQLBoolean;
 var TodoType = require('../types/task');
 var TodoModel = require('../../models/todo');
 
@@ -12,8 +13,13 @@ exports.update = {
     },
     name: {
       type: new GraphQLNonNull(GraphQLString),
+    },
+    isDone: {
+      type: new GraphQLNonNull(GraphQLBoolean),
     }
   },
+
+  // need to figure out how to mark task as done
   resolve(root, params) {
     return TodoModel.findByIdAndUpdate(
       params.id,
@@ -23,4 +29,6 @@ exports.update = {
       .catch(err => new Error(err));
   }
 }
+
+
 

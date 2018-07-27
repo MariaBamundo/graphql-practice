@@ -5,6 +5,10 @@ var todoSchema = new Schema({
   name: {
     type: String,
     required: true
+  },
+  check:{
+    type: Boolean,
+    required: true
   }
 });
 
