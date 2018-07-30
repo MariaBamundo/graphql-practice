@@ -1,10 +1,10 @@
 
 var GraphQLObjectType = require('graphql').GraphQLObjectType;
 var GraphQLList = require('graphql').GraphQLList;
-var TodoModel = require('../../models/todo');
+var TodoModel = require('../../schema');
 var taskType = require('../types/task').todoType;
 
-// Query
+// Query to show tasks
 exports.queryType = new GraphQLObjectType({
   name: 'Query',
   fields: function () {

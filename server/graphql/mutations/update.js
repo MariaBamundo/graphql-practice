@@ -2,7 +2,7 @@ var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
 var GraphQLBoolean = require('graphql').GraphQLBoolean;
 var TodoType = require('../types/task');
-var TodoModel = require('../../models/todo');
+var TodoModel = require('../../schema');
 
 exports.update = {
   type: TodoType.todoType,
@@ -14,7 +14,7 @@ exports.update = {
     name: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    checked: {
+    isDone: {
       type: new GraphQLNonNull(GraphQLBoolean),
     }
   },

@@ -4,7 +4,6 @@ export const GET_TASKS = gql`
     query{
         tasks{
             name
-            checked
         }
     }
 `;

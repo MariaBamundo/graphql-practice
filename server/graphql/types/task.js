@@ -17,7 +17,7 @@ exports.todoType = new GraphQLObjectType({
       name: {
         type: GraphQLString
       },
-      checked: {
+      isDone: {
         type: GraphQLBoolean
       }
     }
