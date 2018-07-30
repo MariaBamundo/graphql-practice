@@ -6,7 +6,7 @@ var todoSchema = new Schema({
     type: String,
     required: true
   },
-  check:{
+  checked:{
     type: Boolean,
     required: true
   }

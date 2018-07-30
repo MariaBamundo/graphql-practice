@@ -4,6 +4,7 @@ var GraphQLObjectType = require('graphql').GraphQLObjectType;
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLID = require('graphql').GraphQLID;
 var GraphQLString = require('graphql').GraphQLString;
+var GraphQLBoolean = require('graphql').GraphQLBoolean;
 
 // Task Type
 exports.todoType = new GraphQLObjectType({
@@ -15,6 +16,9 @@ exports.todoType = new GraphQLObjectType({
       },
       name: {
         type: GraphQLString
+      },
+      checked: {
+        type: GraphQLBoolean
       }
     }
   }

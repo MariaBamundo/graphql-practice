@@ -14,7 +14,7 @@ exports.update = {
     name: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    isDone: {
+    checked: {
       type: new GraphQLNonNull(GraphQLBoolean),
     }
   },

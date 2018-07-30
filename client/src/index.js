@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App';
+import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import ApolloClient from "apollo-boost";
+import { HttpLink }  from "apollo-link-http";
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+
 
 const client = new ApolloClient({
-  uri: "https://localhost:4000/graphql"
+  link: new HttpLink(
+    {
+      uri: "http://localhost:4000/graphql/"
+    }),
+    cache: new InMemoryCache()
 });
 
+//so you can manipulate db within react
 ReactDOM.render(<ApolloProvider client={client}>
+
     <App />
+    
 </ApolloProvider>, document.getElementById('root'));
-registerServiceWorker();
