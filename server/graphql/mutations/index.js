@@ -1,3 +1,4 @@
+// use resolvers instead ...?
 var addTask = require('./add').add;
 var removeTask = require('./remove').remove;
 var updateTask = require('./update').update;

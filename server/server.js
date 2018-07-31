@@ -7,11 +7,6 @@ const cors = require('cors');
 //initialize app
 const app = express();
 
-/*const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true
-}*/
-
 app.use('*', cors());
 
 //create graphql schema
@@ -25,28 +20,6 @@ app.use('/graphql', cors(), graphqlHTTP({
 //connect to db using mongoose
 mongoose.connect('mongodb://localhost/todo');
 
-
-//trying to use hapi
-/*
-const server = Hapi.server({
-  port: 3000,
-  host: 'localhost'
-});
-
-const init = async () => {
-
-  await server.start();
-  console.log(`Server running at: ${server.info.uri}`);
-};
-
-process.on('unhandledRejection', (err) => {
-
-  console.log(err);
-  process.exit(1);
-});
-
-init();*/
-
 //test db connection
 var db = mongoose.connection;
 
@@ -56,7 +29,6 @@ db.once('open', function(){
   //connected!
   console.log('DB connected')
 });
-
 
 // run app on port 4000 and check
 const PORT = process.env.PORT || 4000;

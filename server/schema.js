@@ -1,21 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
+
 
 var todoSchema = new Schema({
-  id: {
-    // WTF why cant the type be ID type: ID,
-    type: Number,
-    required: true,
-    unique: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  isDone:{
-    type: Boolean,
-    required: true
-  }
+  item: String,
+  isDone: Boolean,
 });
 
 var Model = mongoose.model('Schema', todoSchema);
