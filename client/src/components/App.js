@@ -17,27 +17,28 @@ class App extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     
+    //change state.name variable
     handleChange(e) {
         this.setState({ name: e.target.value });
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        //if the length of your name doesn't... don't. 
         if (!this.state.name.length) {
             return;
         }
-        this.props.addTask({
+        this.props.addNewTask({
             variables: {
                 name: this.state.name,
-                //set to false automatically
-                isDone: false
             },
-            update: (store, { data: { newTask } }) => {
-                
-                const data = store.readQuery({ query: GET_TASKS });
-               
+            update: (store, { data: { newTask } }) => { 
+                //By this point in execution, the new task is already added. 
+                //GetTasks from cache , not from database to load locally       
+                const data = store.readQuery({ query: GET_TASKS });  
+                //Add the new task we generated to the local dataset 
                 data.tasks.push(newTask);
-                
+                //Write the new dataset as the cache ------ DOES NOT WORK IDK WHY 
                 store.writeQuery({ query: GET_TASKS, data });
                 this.setState({ name: '' });
             },
@@ -72,6 +73,7 @@ class App extends Component {
     }
 }
 
-export default compose(graphql(GET_TASKS, { name: 'getTasks' }), 
-graphql(ADD_TASK, {name: 'addTask'})
-) (App);
+export default compose(
+    graphql(GET_TASKS, { name: 'getTasks' }), 
+    graphql(ADD_TASK, { name: 'addNewTask'}))
+    (App);

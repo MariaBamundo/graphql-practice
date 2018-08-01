@@ -1,9 +1,10 @@
 import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
 
-
+//create your GraphQL mutation, wrap it in gql
 export const ADD_TASK = gql`
-  mutation addTask($id: String!){
-    newTask(name: String ){
+  mutation AddTask($name: String!){
+    addTask(name: $name, isDone: false ){
       id
       name
       isDone

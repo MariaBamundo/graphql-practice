@@ -4,9 +4,15 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 var todoSchema = new Schema({
-  item: String,
-  isDone: Boolean,
+  name: {
+    type: String,
+    required: true
+  },
+  isDone: {
+    type: Boolean,
+    required: true
+  }
 });
 
-var Model = mongoose.model('Schema', todoSchema);
+var Model = mongoose.model('Todo', todoSchema);
 module.exports = Model;
