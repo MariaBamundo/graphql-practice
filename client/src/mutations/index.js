@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
 
 //create your GraphQL mutation, wrap it in gql
 export const ADD_TASK = gql`

@@ -1,4 +1,4 @@
-import{ gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 
 export const GET_TASKS = gql`
     query {
@@ -9,3 +9,4 @@ export const GET_TASKS = gql`
         }
     }
 `;
+

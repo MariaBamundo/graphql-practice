@@ -1,5 +1,28 @@
-.App {
+body{
+  background-color:  rgb(116, 194, 186);
+}
+
+.App{
   text-align: center;
+  font-size: xx-large;
+  color: rgb(100, 100, 100);
+}
+
+input{
+  border: none;
+  border-bottom: 3px solid teal;
+}
+
+.taskList{
+  background-color: rgb(181, 230, 230);
+}
+
+ul {
+  list-style-type: none;
+}
+
+li:hover{
+    background-color: rgb(166, 218, 218);
 }
 
 .App-logo {

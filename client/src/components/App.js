@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../index.css';
+
+import './App.css';
 //import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 import TaskList  from "./TaskList";
@@ -16,7 +17,7 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
+  
     //change state.name variable
     handleChange(e) {
         this.setState({ name: e.target.value });
@@ -32,17 +33,18 @@ class App extends Component {
             variables: {
                 name: this.state.name,
             },
-            update: (store, { data: { newTask } }) => { 
+            update: (store, { data: { addTask } }) => { 
                 //By this point in execution, the new task is already added. 
                 //GetTasks from cache , not from database to load locally       
                 const data = store.readQuery({ query: GET_TASKS });  
                 //Add the new task we generated to the local dataset 
-                data.tasks.push(newTask);
+                data.tasks.push(addTask);
                 //Write the new dataset as the cache ------ DOES NOT WORK IDK WHY 
                 store.writeQuery({ query: GET_TASKS, data });
                 this.setState({ name: '' });
             },
         }).then(function handleChange(response) {
+            this.setState({ name: '' });
             console.log(response);
         });
     }
@@ -54,7 +56,7 @@ class App extends Component {
         }
         return (
             <div className="App">
-                <h2>Todo...</h2>
+                <h1>Todo...</h1>
                 <div className='taskList'>
                     <form onSubmit={this.handleSubmit}>
                         <div className='input'>
